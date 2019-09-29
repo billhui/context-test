@@ -14,13 +14,15 @@ export const AppContext = React.createContext();
 function App() {
   const ref = React.createRef();
   
-  const [homeValue, setHomeValue] = React.useState("");
+  const [homeValue, setHomeValue] = React.useState("Click 'Grab From Home'");
 
   const onClick = () => {
     console.log(ref);
     if (ref.current) {
       console.log(ref.current.data);
       setHomeValue(ref.current.data.text);
+    } else {
+      setHomeValue("Use the nav bar to navigate to Home first");
     }
   };
 
@@ -32,7 +34,7 @@ function App() {
             <Menu
               theme="dark"
               mode="horizontal"
-              defaultSelectedKeys={['2']}
+              defaultSelectedKeys={['3']}
               style={{ lineHeight: '64px' }}
             >
               <Menu.Item key="1"> <Link to="/">Home</Link></Menu.Item>
@@ -43,7 +45,7 @@ function App() {
           <Content>
             <div className={styles.App}>
               <div>
-                <Button onClick={onClick}>Test</Button>
+                <Button onClick={onClick}>Grab From Home</Button>
                 <Divider>Locale State from Home component:</Divider>
                 <Paragraph>{homeValue}</Paragraph>
               </div>
